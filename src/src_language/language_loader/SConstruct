@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+import os
+import subprocess
+import glob
+
+
+lib_output = "../../editor_workspace/template_files/default/programming_languages/cplusplus/load-cpp.dll"
+
+def clear_files():
+  for name in glob.glob('*.o'):
+    os.remove(name)
+  
+
+try:
+  if os.path.exists(lib_output):
+    os.remove(lib_output)
+
+  if subprocess.Popen('g++ -c *.cpp').wait() != 0:
+    raise ValueError("Cannot compile")
+
+  if(len(glob.glob('*.c')) > 0):
+    if subprocess.Popen('g++ -c *.c').wait() != 0:
+      raise ValueError("Cannot compile")
+
+  if subprocess.Popen('g++ *.o -shared -o ' + lib_output).wait() != 0:
+    raise ValueError("Cannot link")
+
+  clear_files()
+
+except:
+  clear_files()
+  raise

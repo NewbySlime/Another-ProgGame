@@ -1,0 +1,2 @@
+"stdin", "stdout", "stderr" is not the same as the Windows' counterparts (ie. STD_OUTPUT_HANDLE). Hence, this difference can be used to use Windows' standard pipes for IPC. And the standard file descriptor of c/c++ can be used for logging the program.
+See "redirected_io" test for example on modifying c/c++ std file descriptor.

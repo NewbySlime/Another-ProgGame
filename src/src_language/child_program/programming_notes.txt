@@ -1,0 +1,4 @@
+----- UNSAFE CODE -----
+For this part of code, "handler" program cannot force a program to stop for saving a program state.
+As WINAPI might or might not be random when it comes to HANDLEs and cannot be sure if it's okay to stop the code while using WINAPI or kernel calls.
+Libraries function address or variables might change whenever a code changes, as they will be "in always updated".

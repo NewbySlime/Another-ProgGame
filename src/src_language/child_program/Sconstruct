@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+import os
+import shutil
+import subprocess
+import glob
+
+
+dll_output = "../../editor_workspace/template_files/default/programming_languages/cplusplus/dynamic_libraries/lib_gameutils.dll"
+static_dir = "../../editor_workspace/template_files/default/programming_languages/cplusplus/static_libraries"
+include_dir = "../../editor_workspace/template_files/default/programming_languages/cplusplus/include_file"
+
+
+def clear_files(success):
+  for _fname in glob.glob('*.o'):
+    if success:
+      shutil.copy(_fname, os.path.join(static_dir, _fname))
+    os.remove(_fname)
+
+  for _fname in glob.glob('./dynamic_library/*.o'):
+    os.remove(os.path.join('./dynamic_library', _fname))
+
+
+
+try:
+  # static_library
+  for _fname in glob.glob(os.path.join(static_dir, "*.o")):
+    os.remove(os.path.join(static_dir, _fname))
+
+  if subprocess.Popen('g++ -c ./static_library/*.cpp').wait() != 0:
+    raise ValueError("Cannot compile");
+
+  if len(glob.glob('./static_library/*.c')) > 0:
+    if subprocess.Popen('g++ -c ./static_library/*.c').wait() != 0:
+      raise ValueError("Cannot compile");
+
+
+  # dynamic_library
+  if os.path.exists(dll_output):
+    os.remove(dll_output)
+
+  if subprocess.Popen('g++ -c ./dynamic_library/*.cpp').wait() != 0:
+    raise ValueError("Cannot compile")
+
+  if len(glob.glob('./dynamic_library/*.c')) > 0:
+    if subprocess.Popen('g++ -c ./dynamic_library/*.c').wait() != 0:
+      raise ValueError("Cannot compile")
+    
+  if subprocess.Popen('g++ *.o -shared -o ' + dll_output).wait() != 0:
+    raise ValueError("Cannot link")
+
+  
+  # put include files to include_file
+  for files in glob.glob('./user_header/*'):
+    shutil.copy(files, os.path.join(include_dir, files))
+
+
+  clear_files(True)
+
+except:
+  clear_files(False)
+  raise

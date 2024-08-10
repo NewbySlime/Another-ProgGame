@@ -1,0 +1,11 @@
+{
+  "name": "C++",
+  "handler_library": "load-cpp.dll",
+  "include_file": "include_file",
+  "extension": [
+    "cpp",
+    "c",
+    "hpp",
+    "h"
+  ]
+}

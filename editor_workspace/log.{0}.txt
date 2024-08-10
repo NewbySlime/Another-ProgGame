@@ -1,0 +1,3 @@
+[INF][20:51:19.73] : hello world
+[WRN][20:51:19.73] : there's a bug?
+[ERR][20:51:19.73] : an error occurred

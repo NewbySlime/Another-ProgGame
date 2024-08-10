@@ -1,0 +1,41 @@
++ user_data
+|
+--- + save_file_x
+    |
+    |
+    + older_saves // basically group of folders containing old saves
+    |
+    |
+    --- + codes
+    |   |
+    |   --- + name_of_the_program_1
+    |   |   |
+    |   |   --- + include
+    |   |   |
+    |   |   + program.c
+    |   |   
+    |   --- + name_of_the_program_2
+    |       |
+    |       --- + include
+    |       |
+    |       + program.c
+    |
+    |
+    --- + programs
+    |   |
+    |   + name_of_the_program_1.exe
+    |
+    |
+    + items.bin
+    |
+    + modules.bin
+    |
+    + player.bin
+    |
+    + robots.bin
+    |
+    + bigdata.bin
+    |
+    + save_data.json
+    |
+    + world.bin

@@ -1,0 +1,1 @@
+By using temporary files stored by windows, it can store logging or input for the programs.

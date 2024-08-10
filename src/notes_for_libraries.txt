@@ -1,0 +1,2 @@
+For Dynamic Libraries
+If the part of the code used were from dynamic libraries, make sure to block "save-state" suspending so that the main program will wait uhtil the in-game program doesn't use any dynamic libraries' functions.

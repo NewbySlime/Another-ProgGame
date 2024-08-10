@@ -1,0 +1,1 @@
+Thread's signal still persist even if the thread is already exited.

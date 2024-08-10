@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://xl2arcgvl6th"]
+
+[node name="init_autoload" type="init_autoload"]
